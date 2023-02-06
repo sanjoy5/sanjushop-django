@@ -23,6 +23,9 @@ class Product(models.Model):
         return reverse('product_details', args=[self.category.slug, self.slug])
 
     def image_tag(self):
-        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+        if self.image.url:
+            return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+        else:
+            return ""
 
   
